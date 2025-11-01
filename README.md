@@ -86,10 +86,6 @@ npm run dev
 
 Aplikacja będzie dostępna pod adresem: [http://localhost:5173](http://localhost:5173).
 
-<br>
-
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/project-moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
-
 ## 📦 Build
 
 Budowanie wersji produkcyjnej:
@@ -100,10 +96,7 @@ npm run build
 
 ## 🌐 Deploy
 
-Kod będzie automatycznie się zbierać i robić deploy aktualnej wersji projektu na
-GitHub Pages, w gałąź `gh-pages`, za każdym razem jeśli zostaną wprowadzone
-zmiany w `main`. Na przykład, po bezpośrednim push lub po przyjęciu
-pull-request. Po pewnym czasie stronę można będzie zobaczyć na żywo pod adresem:
+Kod będzie automatycznie się zbierać i robić deploy aktualnej wersji projektu na GitHub Pages, w gałąź `gh-pages`, za każdym razem jeśli zostaną wprowadzone zmiany w `main`. Na przykład, po bezpośrednim push lub po przyjęciu pull-request. Po pewnym czasie stronę można będzie zobaczyć na żywo pod adresem:
 
 **[https://brzozanet.github.io/project-moviebox/](https://brzozanet.github.io/project-moviebox/)**
 
@@ -112,13 +105,17 @@ pull-request. Po pewnym czasie stronę można będzie zobaczyć na żywo pod adr
 - Wszystkie partiale plików stylów powinny być w folderze `src/sass` i importować się w `src/sass/main.scss`
 - Wszystkie partiale plików kontentu HTML powinny się znajdować w folderze `partials` i importować się w `index.html` lub `library.html`
 - Pliki skryptów JS umieszczamy w folderze `js`, wskazane aby każda niezależna funkcjonalność znalazła się w oddzielnym pliku .js i importowała się w pliku `app.js`
-- Zdjęcia dodawajcie w folder `src/images`, przed tym zoptymalizujcie te zdjęcia które dodajecie. Program po prostu kopiuje wykorzystane zdjęcia aby system nie musiał ich optymalizować, bo na słabych komputerach to może zająć dużo czasu.
+- Zdjęcia umieszczamy w folderze `src/images`, przed dodaniem powinny być zoptymalizowane. Program po prostu kopiuje wykorzystane zdjęcia aby system nie musiał ich optymalizować, bo na słabych komputerach to może zająć dużo czasu.
 
-## ⚙️ Ustawienia VSC
+## ⚙️ Ustawienia edytora kodu
 
-- **WAŻNE**: NIE uruchamiaj watchera SASS (`Watch Sass`) w Visual Studio Code, ponieważ pliki css generują się z scss za pomocą Parcel JS
-- Wyłączamy autozapis w Visual Studio Code, ponieważ każdy błąd w pliku, powstały choćby poprzez autozapis w czasie pisania instrukcji, skutkuje błędem Parcel JS
+- **WAŻNE**: NIE uruchamiaj watchera SASS (`Watch Sass`), ponieważ pliki css generują się z scss za pomocą Parcel JS
+- Wyłączamy autozapis w edytorze, ponieważ każdy błąd w pliku, powstały choćby poprzez autozapis w czasie pisania instrukcji, skutkuje błędem Parcel JS
 
 ## 🤝 Wkład
 
 Wszelkie sugestie i pull requesty są mile widziane. Aby zgłosić problem lub zasugerować funkcjonalność, otwórz [nowy issue](https://github.com/brzozanet/project-moviebox/issues).
+
+<br>
+
+![Screenshot App](https://raw.githubusercontent.com/brzozanet/project-moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
