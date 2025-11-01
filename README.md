@@ -88,7 +88,7 @@ Aplikacja będzie dostępna pod adresem: [http://localhost:5173](http://localhos
 
 <br>
 
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/react-todo-list/refs/heads/main/src/images/gh-cover-react-todo-list.jpg)
+![Screenshot App](https://raw.githubusercontent.com/brzozanet/project-moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
 
 ## 📦 Build
 
