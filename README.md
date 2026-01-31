@@ -6,7 +6,7 @@
 
 Aplikacja jest dostępna online:
 
-- [GitHub Pages](https://brzozanet.github.io/project-moviebox/)
+- [GitHub Pages](https://brzozanet.github.io/moviebox/)
 
 ## 🎬 Funkcjonalności
 
@@ -34,7 +34,7 @@ Aplikacja jest dostępna online:
 ## 📁 Struktura projektu
 
 ```
-project-moviebox/
+moviebox/
 ├── src/
 │   ├── images/                 # Obrazy i zasoby graficzne
 │   ├── js/                     # Pliki JavaScript
@@ -66,8 +66,8 @@ Na komputerze musi być zainstalowana LTS-wersja [Node.js](https://nodejs.org/en
 1. **Klonowanie repozytorium**:
 
 ```bash
-git clone https://github.com/brzozanet/project-moviebox.git
-cd project-moviebox
+git clone https://github.com/brzozanet/moviebox.git
+cd moviebox
 ```
 
 2. **Instalacja zależności**:
@@ -98,7 +98,7 @@ npm run build
 
 Kod będzie automatycznie się zbierać i robić deploy aktualnej wersji projektu na GitHub Pages, w gałąź `gh-pages`, za każdym razem jeśli zostaną wprowadzone zmiany w `main`. Na przykład, po bezpośrednim push lub po przyjęciu pull-request. Po pewnym czasie stronę można będzie zobaczyć na żywo pod adresem:
 
-**[https://brzozanet.github.io/project-moviebox/](https://brzozanet.github.io/project-moviebox/)**
+**[https://brzozanet.github.io/moviebox/](https://brzozanet.github.io/moviebox/)**
 
 ### Zasady organizacji plików
 
@@ -114,8 +114,8 @@ Kod będzie automatycznie się zbierać i robić deploy aktualnej wersji projekt
 
 ## 🤝 Wkład
 
-Wszelkie sugestie i pull requesty są mile widziane. Aby zgłosić problem lub zasugerować funkcjonalność, otwórz [nowy issue](https://github.com/brzozanet/project-moviebox/issues).
+Wszelkie sugestie i pull requesty są mile widziane. Aby zgłosić problem lub zasugerować funkcjonalność, otwórz [nowy issue](https://github.com/brzozanet/moviebox/issues).
 
 <br>
 
-![Screenshot App](https://raw.githubusercontent.com/brzozanet/project-moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
+![Screenshot App](https://raw.githubusercontent.com/brzozanet/moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
