@@ -123,6 +123,15 @@ Do buildu pod GitHub Pages używane jest polecenie:
 npm run build:pages
 ```
 
+Aby deploy na GitHub Pages działał poprawnie, ustaw w repozytorium sekret:
+
+`Settings -> Secrets and variables -> Actions -> New repository secret`
+
+- Name: `API_KEY`
+- Value: Twoj klucz TMDb API
+
+Workflow `deploy.yml` wstrzykuje ten sekret do procesu buildu.
+
 ### Zasady organizacji plików
 
 - Wszystkie partiale stylów powinny znajdować się w folderze `src/sass` i być importowane w `src/sass/main.scss`.
