@@ -1,3 +1,4 @@
+import "../sass/main.scss";
 import {
   PROJECT_LOCATION_PATH,
   API_KEY,
@@ -21,19 +22,19 @@ export const fetchMostPopular = async () => {
     },
   };
 
-  const fetchPopularData = async page => {
+  const fetchPopularData = async (page) => {
     try {
       showSpinner();
       const response = await fetch(
         `${URL}movie/popular?language=${LANGUAGE}&page=${page}&api_key=${API_KEY}`,
-        options
+        options,
       );
       const data = await response.json();
       hideSpinner();
       return data;
     } catch (error) {
       Notiflix.Notify.failure(
-        "Sorry, the server is not responding. Please try again later."
+        "Sorry, the server is not responding. Please try again later.",
       );
     }
   };
@@ -42,13 +43,13 @@ export const fetchMostPopular = async () => {
     try {
       const response = await fetch(
         `${URL}genre/movie/list?api_key=${API_KEY}`,
-        options
+        options,
       );
       const genreNames = await response.json();
       return genreNames.genres;
     } catch (error) {
       Notiflix.Notify.failure(
-        "Sorry, the server is not responding. Please try again later."
+        "Sorry, the server is not responding. Please try again later.",
       );
     }
   };
@@ -56,7 +57,7 @@ export const fetchMostPopular = async () => {
   const matchGenres = async () => {
     const genres = await fetchGenres();
     const popularMoviesData = await fetchPopularData(currentPage);
-    const movies = popularMoviesData.results.map(movie => {
+    const movies = popularMoviesData.results.map((movie) => {
       const movieGenresIds = movie.genre_ids;
       const matchedGenres = [];
       for (let i = 0; i < movieGenresIds.length; i++) {
@@ -87,7 +88,7 @@ export const fetchMostPopular = async () => {
       currentPage++;
       const genres = await fetchGenres();
       const popularMoviesData = await fetchPopularData(currentPage);
-      const movies = popularMoviesData.results.map(movie => {
+      const movies = popularMoviesData.results.map((movie) => {
         const movieGenresIds = movie.genre_ids;
         const matchedGenres = [];
         for (let i = 0; i < movieGenresIds.length; i++) {
@@ -107,8 +108,8 @@ export const fetchMostPopular = async () => {
     }
   };
 
-  const popularMovies = movies => {
-    movies.forEach(movie => {
+  const popularMovies = (movies) => {
+    movies.forEach((movie) => {
       const card = document.createElement("div");
       card.className = "card";
       card.id = "card";
@@ -123,8 +124,8 @@ export const fetchMostPopular = async () => {
 
       card.innerHTML = `
           <img class="card__poster" src="${posterSrc}" alt="${posterAlt}" title="${
-        movie.original_title
-      }" />
+            movie.original_title
+          }" />
         </div>
         <div class="card__content">
           <div class="card__info">
@@ -150,7 +151,7 @@ export const fetchMostPopular = async () => {
 
 fetchMostPopular();
 
-export const getTrailerLink = async id => {
+export const getTrailerLink = async (id) => {
   const options = {
     method: "GET",
     headers: {
@@ -162,7 +163,7 @@ export const getTrailerLink = async id => {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=${LANGUAGE}&api_key=${API_KEY}`,
-      options
+      options,
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");

@@ -5,7 +5,8 @@
   "homepage": "https://brzozanet.github.io/moviebox",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /moviebox/"
+    "build": "parcel build src/*.html --public-url ./",
+    "build:pages": "parcel build src/*.html --public-url /moviebox/"
   },
   "repository": {
     "type": "git",

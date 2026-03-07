@@ -3,5 +3,14 @@
 }
 
 .library__title {
-  font-size: 1.2em;
+  margin: 36px auto;
+  max-width: 560px;
+  padding: 16px 22px;
+  border-radius: $radiusMd;
+  border: 1px dashed #fdba74;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
 }

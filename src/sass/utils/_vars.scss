@@ -1,14 +1,26 @@
 // Colors
 $IColor: #ffffff;
-$IIColor: #000000;
-$IIIColor: #ff6b08;
-$IVColor: #545454;
-$lineColor: #ff001b;
-$IBgColor: #f7f7f7;
-$ImodalColor: #8c8c8c;
-$IImodalColor: #ff6b01;
-$IbtnColor: #ff6b01;
-$IIbtnColor: #ff6b02;
-$modalBgColor: #8c8c8c;
+$IIColor: #0f172a;
+$IIIColor: #fb923c;
+$IVColor: #475569;
+$lineColor: #f97316;
+$IBgColor: #f8fafc;
+$ImodalColor: #94a3b8;
+$IImodalColor: #ea580c;
+$IbtnColor: #f97316;
+$IIbtnColor: #fb923c;
+$modalBgColor: #64748b;
+
+// UI tokens
+$surfaceColor: #ffffff;
+$surfaceColorMuted: #f1f5f9;
+$borderColor: #e2e8f0;
+$overlayColor: rgba(15, 23, 42, 0.68);
+$shadowSoft: 0 8px 28px rgba(15, 23, 42, 0.08);
+$shadowMedium: 0 16px 36px rgba(15, 23, 42, 0.14);
+$radiusMd: 14px;
+$radiusLg: 18px;
+$timing: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+
 // Fonts
-$fontPrimary: "Roboto", sans-serif;
+$fontPrimary: "DM Sans", "Segoe UI", sans-serif;

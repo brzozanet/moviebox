@@ -1,4 +1,4 @@
-# 🎥 Filmoteka (Moviebox)
+# 🎥 Inside the Moviebox
 
 **Filmoteka (Moviebox)** to nowoczesna aplikacja webowa do wyszukiwania i przeglądania filmów z integracją TMDb API. Umożliwia wyszukiwanie w czasie rzeczywistym, przeglądanie szczegółów (obsada, oceny, zwiastuny), nieskończone przewijanie oraz budowanie osobistej biblioteki filmów (obejrzane / do obejrzenia) zapisywanej w `localStorage`. Projekt został zrealizowany w vanilla JavaScript i demonstruje pracę z REST API oraz organizację kodu bez użycia frameworków.
 
@@ -38,7 +38,6 @@ moviebox/
 ├── .github/                   # Konfiguracja CI/CD
 │   └── workflows/
 │       └── deploy.yml         # Build i deploy na GitHub Pages
-├── partials/                  # Współdzielone fragmenty HTML
 ├── src/
 │   ├── images/                 # Obrazy i zasoby graficzne
 │   ├── js/                     # Pliki JavaScript
@@ -53,6 +52,7 @@ moviebox/
 │   ├── sass/                   # Style SASS/SCSS
 │   │   ├── main.scss           # Główny plik stylów
 │   │   └── partials/           # Częściowe pliki stylów
+│   ├── partials/               # Współdzielone fragmenty HTML
 │   ├── index.html              # Strona główna
 │   └── library.html            # Strona biblioteki
 ├── dist/                       # Zbudowane pliki (generowane po build)
@@ -87,7 +87,8 @@ npm install
 npm run dev
 ```
 
-Aplikacja będzie dostępna pod adresem: [http://localhost:1234](http://localhost:1234).
+Aplikacja domyślnie będzie dostępna pod adresem: [http://localhost:1234](http://localhost:1234).
+Jeśli port `1234` jest zajęty, Parcel automatycznie uruchomi serwer na innym wolnym porcie i wyświetli właściwy adres w terminalu.
 
 ## 📦 Build
 
@@ -97,16 +98,24 @@ Budowanie wersji produkcyjnej:
 npm run build
 ```
 
+Lokalny build używa relatywnego `public-url` (`./`), więc poprawnie działa np. przy serwowaniu folderu `dist` przez prosty serwer statyczny.
+
 ## 🌐 Deploy
 
 Przy każdym pushu do gałęzi `main` uruchamia się workflow GitHub Actions, który buduje projekt i publikuje zawartość folderu `dist` na gałęzi `gh-pages`. Po chwili aktualna wersja jest dostępna pod adresem:
 
 **[https://brzozanet.github.io/moviebox/](https://brzozanet.github.io/moviebox/)**
 
+Do buildu pod GitHub Pages używane jest polecenie:
+
+```bash
+npm run build:pages
+```
+
 ### Zasady organizacji plików
 
 - Wszystkie partiale stylów powinny znajdować się w folderze `src/sass` i być importowane w `src/sass/main.scss`.
-- Wszystkie partiale HTML powinny znajdować się w folderze `partials` i być importowane w `index.html` lub `library.html`.
+- Wszystkie partiale HTML powinny znajdować się w folderze `src/partials` i być importowane w `index.html` lub `library.html`.
 - Pliki skryptów JS umieszczamy w folderze `js`; zalecane jest, aby każda niezależna funkcjonalność była w oddzielnym pliku `.js`, importowanym w `app.js`.
 - Obrazy umieszczamy w folderze `src/images`; przed dodaniem powinny być zoptymalizowane. Parcel kopiuje wykorzystane pliki, dzięki czemu nie musi wykonywać ciężkiej optymalizacji podczas budowania na słabszych komputerach.
 

@@ -4,16 +4,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: 500ms linear;
-  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition:
+    opacity $timing,
+    visibility $timing;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(0%, 0%);
-  transition: 700ms ease-in-out;
 }
 
 .modal {
@@ -23,18 +25,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 500px;
-  background-color: $IColor;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 48px 20px 20px;
-  overflow: hidden visible;
-  transition: 1000ms;
+  max-height: 90vh;
+  padding: 50px 20px 24px;
+  overflow-y: auto;
+  background-color: $surfaceColor;
+  border-radius: $radiusLg;
+  box-shadow: $shadowMedium;
+  border: 1px solid $borderColor;
+  transition: transform $timing;
 
   &__item {
     display: flex;
     flex-direction: column;
+    gap: 20px;
   }
 
   &__btn {
@@ -47,52 +50,25 @@
   &__btn-close {
     cursor: pointer;
     position: absolute;
-    right: 8px;
-    top: 13px;
+    right: 14px;
+    top: 14px;
     fill: $IIColor;
-    border: transparent;
-    background-color: transparent;
-    transform: rotate(0);
-    animation: pulseBtn 3200ms infinite;
-    filter: drop-shadow(2px 4px 2px rgba(0, 0, 0, 0.5));
+    background-color: $surfaceColorMuted;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $borderColor;
     box-shadow: none;
+    transition:
+      background-color $timing,
+      transform $timing;
   }
 
   &__btn-close:hover,
   &__btn-close:focus {
+    background-color: #ffe9d8;
+    transform: rotate(90deg);
     box-shadow: none;
-  }
-
-  @keyframes pulseBtn {
-    0% {
-      transform: rotate(0deg);
-      filter: drop-shadow(3px 6px 2px rgba(0, 0, 0, 0.5));
-    }
-
-    50% {
-      transform: rotate(70deg);
-      filter: drop-shadow(3px 15px 3px rgba(0, 0, 0, 0.5));
-    }
-
-    70% {
-      transform: rotate(-30deg);
-      filter: drop-shadow(3px 6px 2px rgba(0, 0, 0, 0.5));
-    }
-
-    82% {
-      transform: rotate(16deg);
-      filter: drop-shadow(3px 15px 3px rgba(0, 0, 0, 0.5));
-    }
-
-    90% {
-      transform: rotate(-10deg);
-      filter: drop-shadow(3px 6px 2px rgba(0, 0, 0, 0.5));
-    }
-
-    100% {
-      transform: rotate(0deg);
-      filter: drop-shadow(3px 6px 2px rgba(0, 0, 0, 0.5));
-    }
   }
 
   &__info {
@@ -103,13 +79,15 @@
   }
 
   &__title {
-    text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.12),
-      2px 2px 2px rgba(0, 0, 0, 0.14), 2px 3px 2px rgba(0, 0, 0, 0.2);
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
   }
 
   &__stats-list {
     display: flex;
+    align-items: center;
     padding-bottom: 8px;
   }
 
@@ -118,7 +96,6 @@
     font-size: 12px;
     line-height: 1.33;
     color: $modalBgColor;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   }
 
   &__stats-result {
@@ -129,11 +106,12 @@
   }
 
   &__stats-vote {
-    background-color: $IImodalColor;
+    background: linear-gradient(90deg, $IImodalColor, $IIbtnColor);
     color: $IColor;
-    border-radius: 5px;
+    border-radius: 999px;
     padding: 0 10px;
     font-size: 12px;
+    font-weight: 700;
     line-height: 1.33;
   }
 
@@ -152,15 +130,15 @@
   &__about-header {
     text-transform: uppercase;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     line-height: 1.33;
-    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12),
-      2px 2px 2px rgba(0, 0, 0, 0.14), 1px 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   &__about-text {
     font-size: 12px;
     line-height: 1.66;
+    color: #1e293b;
   }
 
   &__info-buttons {
@@ -184,42 +162,49 @@
   &__button {
     width: 110px;
     height: 44px;
-    border-radius: 5px;
-    border: transparent;
-    outline: 1px solid $IIColor;
-    background-color: $IColor;
+    border-radius: 999px;
+    border: 1px solid $borderColor;
+    background-color: $surfaceColorMuted;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 700;
+    color: $IIColor;
     font-size: 12px;
     font-family: $fontPrimary;
+    letter-spacing: 0.04em;
     line-height: 1.33;
-    padding: 3px 5px 0;
-    transition: 1000ms;
+    padding: 3px 8px 0;
+    transition:
+      background-color $timing,
+      color $timing,
+      border-color $timing,
+      transform $timing;
   }
 
   &__button:hover,
   &__button:focus,
   &__button.button-active {
-    background-color: $IImodalColor;
+    background: linear-gradient(90deg, $IImodalColor, $IIbtnColor);
     color: $IColor;
     cursor: pointer;
-    outline: transparent;
-    transition: 300ms;
-    box-shadow: 8px 8px 8px 3px rgba(0, 0, 0, 0.2),
-      9px 9px 20px 2px rgba(0, 0, 0, 0.4);
+    border-color: transparent;
+    box-shadow: $shadowSoft;
   }
 }
 
 @media screen and (min-width: 768px) {
   .modal {
     width: 704px;
-    height: auto;
-    overflow: hidden;
+    max-height: 84vh;
+    overflow: auto;
 
     &__item {
       display: flex;
       flex-direction: row;
       gap: 20px;
+    }
+
+    &__photo {
+      min-width: 300px;
     }
 
     &__button {
@@ -228,14 +213,10 @@
   }
 
   @media screen and (min-width: 1200px) {
-    // .backdrop {
-    //   background-color: rgba(0, 0, 0, 0);
-    // }
-
     .modal {
       width: 806px;
-      height: auto;
-      overflow: hidden;
+      max-height: 88vh;
+      overflow: auto;
     }
   }
 }

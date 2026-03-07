@@ -1,108 +1,96 @@
-// ️☎️ Mobile First ...START
 .page-header {
+  position: relative;
   height: 230px;
-  background-image: url(../images/backgroundHome-M@1x.png);
+  margin: 0 auto;
+  overflow: hidden;
+  background-image:
+    linear-gradient($overlayColor, $overlayColor),
+    url(../images/backgroundHome-M@1x.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 0 auto;
 
   &__wrapper {
+    position: relative;
+    z-index: 1;
     display: flex;
-    padding: 40px 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 36px;
+  }
+
+  &__logo-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $IColor;
+  }
+
+  &__logo {
+    fill: $IColor;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
   }
 
   &__title {
     color: $IColor;
     font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   }
 
   &__navigation--list {
     display: flex;
-    gap: 40px;
-    padding-left: 112px;
+    align-items: center;
+    gap: 28px;
   }
 
   &__navigation--link {
-    color: $IColor;
+    color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     font-size: 12px;
-    line-height: 1.16;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: color $timing;
+  }
+
+  &__navigation--link:hover,
+  &__navigation--link:focus {
+    color: $IColor;
   }
 
   &__search {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
-    padding-top: 37px;
+    padding-top: 34px;
   }
 
   &__search-border {
-    width: 230px;
-    padding: 10px 10px;
+    width: 100%;
+    max-width: 253px;
+    padding: 12px 16px;
     color: $IColor;
-    font-weight: 400;
     font-size: 15px;
-    line-height: 1.14;
-    background-color: #2c282b;
-    border: 10px dotted white;
-    border-radius: 17px;
-    opacity: 0.7;
-    transition: 500ms ease-in;
+    font-weight: 500;
+    background: rgba(15, 23, 42, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    transition:
+      border-color $timing,
+      background-color $timing,
+      transform $timing;
   }
 
   &__search-border:hover,
   &__search-border:focus {
     outline: none;
-    transform: scale(1.2);
-    opacity: 1;
-    border-color: red;
-    animation-name: flash_border;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-}
-
-@keyframes flash_border {
-  0% {
-    border-color: gold;
-  }
-
-  25% {
-    border-color: $IImodalColor;
-  }
-
-  50% {
-    border-color: $lineColor;
-  }
-
-  75% {
-    border-color: $IColor;
-  }
-
-  100% {
-    border-color: gold;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes moveup {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    background: rgba(15, 23, 42, 0.58);
+    border-color: rgba(251, 146, 60, 0.9);
   }
 }
 
@@ -110,7 +98,9 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .page-header {
-    background-image: url(../images/backgroundHome-M@2x.png);
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundHome-M@2x.png);
   }
 }
 
@@ -119,74 +109,62 @@
     &__title {
       display: none;
     }
+
+    &__navigation--list {
+      gap: 22px;
+    }
   }
 }
-
-// ️☎️ Mobile First ...END
 
 @media screen and (min-width: 768px) {
   .page-header {
     height: 216px;
-    background-image: url(../images/backgroundHome-T@1x.png);
-
-    &__wrapper {
-      padding-left: 32px;
-      padding-right: 32px;
-    }
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundHome-T@1x.png);
 
     &__title {
-      padding-left: 8px;
-    }
-
-    &__navigation--list {
-      padding-left: 387px;
+      padding-left: 6px;
     }
 
     &__search {
-      padding-top: 30px;
+      padding-top: 28px;
     }
 
     &__search-border {
-      width: 336px;
+      max-width: 407px;
     }
   }
 }
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .page-main {
-    background-image: url(../images/backgroundHome-T@2x.png);
+@media (min-device-pixel-ratio: 2) and (min-width: 768px),
+  (min-resolution: 192dpi) and (min-width: 768px),
+  (min-resolution: 2dppx) and (min-width: 768px) {
+  .page-header {
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundHome-T@2x.png);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .page-header {
-    background-image: url(../images/backgroundHome-D@1x.png);
-
-    &__wrapper {
-      padding-left: 32px;
-      padding-right: 32px;
-    }
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundHome-D@1x.png);
 
     &__search-border {
-      width: 394px;
-    }
-
-    &__title {
-      padding-left: 10px;
-    }
-
-    &__navigation--list {
-      padding-left: 898px;
+      max-width: 462px;
     }
   }
 }
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .page-main {
-    background-image: url(../images/backgroundHome-T@2x.png);
+@media (min-device-pixel-ratio: 2) and (min-width: 1280px),
+  (min-resolution: 192dpi) and (min-width: 1280px),
+  (min-resolution: 2dppx) and (min-width: 1280px) {
+  .page-header {
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundHome-T@2x.png);
   }
 }

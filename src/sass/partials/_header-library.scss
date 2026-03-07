@@ -1,66 +1,102 @@
-// ️☎️ Mobile First ...START
 .page-header-library {
+  position: relative;
   height: 230px;
-  background-image: url(../images/backgroundLibrary-M@1x.png);
+  margin: 0 auto;
+  overflow: hidden;
+  background-image:
+    linear-gradient($overlayColor, $overlayColor),
+    url(../images/backgroundLibrary-M@1x.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 0 auto;
 
   &__wrapper {
+    position: relative;
+    z-index: 1;
     display: flex;
-    padding: 40px 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 36px;
+  }
+
+  &__logo-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $IColor;
+  }
+
+  &__logo {
+    fill: $IColor;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
   }
 
   &__title {
     color: $IColor;
     font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   }
 
   &__navigation--list {
     display: flex;
-    gap: 40px;
-    padding-left: 112px;
+    align-items: center;
+    gap: 28px;
   }
 
   &__navigation--link {
-    color: $IColor;
+    color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     font-size: 12px;
-    line-height: 1.16;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: color $timing;
+  }
+
+  &__navigation--link:hover,
+  &__navigation--link:focus {
+    color: $IColor;
   }
 
   &__buttons {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding-top: 60px;
+    gap: 14px;
+    padding-top: 52px;
 
     &-item {
-      width: 130px;
-      height: 44px;
-      display: flex;
+      min-width: 130px;
+      height: 42px;
+      padding: 0 20px;
+      display: inline-flex;
       align-items: center;
-      padding-top: 4px;
       justify-content: center;
       color: $IColor;
-      border: solid 1px $IColor;
-      border-radius: 5px;
-      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
       font-family: $fontPrimary;
-      font-weight: 500;
+      font-weight: 700;
       font-size: 12px;
-      line-height: 1.33;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      transition: 300ms;
+      transition:
+        border-color $timing,
+        background-color $timing,
+        transform $timing;
     }
 
     &-item:hover,
-    &-item:focus &-item.button-active {
-      border: transparent;
+    &-item:focus,
+    &-item.button-active {
+      border-color: transparent;
       background-color: $IbtnColor;
+      color: $IColor;
       cursor: pointer;
-      transition: 300ms;
     }
   }
 }
@@ -69,7 +105,9 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .page-header-library {
-    background-image: url(../images/backgroundLibrary-M@2x.png);
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundLibrary-M@2x.png);
   }
 }
 
@@ -78,79 +116,67 @@
     &__title {
       display: none;
     }
+
+    &__navigation--list {
+      gap: 22px;
+    }
   }
 }
-
-// ️☎️ Mobile First ...END
 
 @media screen and (min-width: 768px) {
   .page-header-library {
     height: 216px;
-    background-image: url(../images/backgroundLibrary-T@1x.png);
-
-    &__wrapper {
-      padding-left: 31px;
-      padding-right: 33px;
-    }
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundLibrary-T@1x.png);
 
     &__title {
-      padding-left: 8px;
-    }
-
-    &__navigation--list {
-      padding-left: 387px;
+      padding-left: 6px;
     }
 
     &__buttons {
-      gap: 32px;
-      padding-top: 40px;
+      gap: 18px;
+      padding-top: 38px;
 
       &-item {
-        width: 152px;
+        min-width: 152px;
       }
     }
   }
 }
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .page-main {
-    background-image: url(../images/backgroundLibrary-T@2x.png);
+@media (min-device-pixel-ratio: 2) and (min-width: 768px),
+  (min-resolution: 192dpi) and (min-width: 768px),
+  (min-resolution: 2dppx) and (min-width: 768px) {
+  .page-header-library {
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundLibrary-T@2x.png);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .page-header-library {
-    background-image: url(../images/backgroundLibrary-D@1x.png);
-
-    &__wrapper {
-      padding-left: 32px;
-      padding-right: 32px;
-    }
-
-    &__title {
-      padding-left: 10px;
-    }
-
-    &__navigation--list {
-      padding-left: 898px;
-    }
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundLibrary-D@1x.png);
 
     &__buttons {
       gap: 16px;
 
       &-item {
-        width: 148px;
+        min-width: 148px;
       }
     }
   }
 }
 
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .page-main {
-    background-image: url(../images/backgroundLibrary-T@2x.png);
+@media (min-device-pixel-ratio: 2) and (min-width: 1280px),
+  (min-resolution: 192dpi) and (min-width: 1280px),
+  (min-resolution: 2dppx) and (min-width: 1280px) {
+  .page-header-library {
+    background-image:
+      linear-gradient($overlayColor, $overlayColor),
+      url(../images/backgroundLibrary-T@2x.png);
   }
 }

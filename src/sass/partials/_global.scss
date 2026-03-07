@@ -5,10 +5,14 @@ html {
 body {
   font-family: $fontPrimary;
   color: $IIColor;
-  background-color: $IColor;
+  background:
+    radial-gradient(circle at 85% -20%, #ffedd5 0, transparent 45%),
+    radial-gradient(circle at -20% 30%, #e0f2fe 0, transparent 38%), $IBgColor;
   font-weight: 500;
-  line-height: 1.17;
+  line-height: 1.4;
   margin: 0;
+  min-height: 100vh;
+  letter-spacing: 0.01em;
   /*
     font-weight: 400;
     line-height: 1.14;
@@ -23,11 +27,13 @@ body {
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: color 600000s 0s, background-color 600000s 0s;
+  transition:
+    color 600000s 0s,
+    background-color 600000s 0s;
 }
 
 input::placeholder {
-  color: $IColor;
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
@@ -44,28 +50,36 @@ p {
 }
 
 img {
+  display: block;
   width: 100%;
-  border-radius: 5px;
-  box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.12), 2px 2px 2px rgba(0, 0, 0, 0.14),
-    2px 3px 2px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: $radiusMd;
+  box-shadow: $shadowSoft;
+  transition:
+    transform $timing,
+    box-shadow $timing;
 }
 
 img:hover,
 img:focus {
-  box-shadow: 8px 8px 8px 3px rgba(0, 0, 0, 0.2),
-    9px 9px 20px 2px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: $shadowMedium;
 }
 
 button {
-  box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.12), 2px 2px 2px rgba(0, 0, 0, 0.14),
-    2px 3px 2px rgba(0, 0, 0, 0.2);
+  border: 0;
+  border-radius: 12px;
+  box-shadow: $shadowSoft;
+  transition:
+    transform $timing,
+    box-shadow $timing,
+    background-color $timing,
+    color $timing;
 }
 
 button:hover,
 button:focus {
-  box-shadow: 8px 8px 8px 3px rgba(0, 0, 0, 0.2),
-    9px 9px 20px 2px rgba(0, 0, 0, 0.4);
+  transform: translateY(-1px);
+  box-shadow: $shadowMedium;
 }
 
 ul {
@@ -76,22 +90,28 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .container {
   width: 100%;
+  max-width: 1280px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
 
   @media screen and (min-width: 320px) {
-    width: 320px;
+    max-width: 320px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    max-width: 1280px;
   }
 }
 
@@ -100,25 +120,43 @@ a {
 }
 
 .current {
-  color: $lineColor;
+  position: relative;
+  color: $IColor;
 
   &::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    margin: 0 auto;
     display: block;
     content: "";
     width: 34px;
     height: 3px;
-    background: $lineColor;
+    background: linear-gradient(90deg, $lineColor, $IIbtnColor);
     border-radius: 2px;
   }
 
   &__line {
+    position: relative;
+
     &::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      margin: 0 auto;
       display: block;
       content: "";
       width: 69px;
       height: 3px;
-      background: $lineColor;
+      background: linear-gradient(90deg, $lineColor, $IIbtnColor);
       border-radius: 2px;
     }
   }
+}
+
+:focus-visible {
+  outline: 2px solid rgba(249, 115, 22, 0.55);
+  outline-offset: 2px;
 }
