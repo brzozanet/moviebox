@@ -1,6 +1,6 @@
 # 🎥 Filmoteka (Moviebox)
 
-**Filmoteka (Moviebox)** to nowoczesna aplikacja webowa umożliwiająca przeglądanie, wyszukiwanie i zarządzanie filmami. Dzięki integracji z The Movie Database (TMDb) API, użytkownicy mogą odkrywać najpopularniejsze produkcje, przeglądać szczegółowe informacje o filmach, oglądać zwiastuny oraz tworzy ćwłasne listy ulubionych tytułów.
+**Filmoteka (Moviebox)** to nowoczesna aplikacja webowa do wyszukiwania i przeglądania filmów z integracją TMDb API. Umożliwia wyszukiwanie w czasie rzeczywistym, przeglądanie szczegółów (obsada, oceny, zwiastuny), nieskończone przewijanie oraz budowanie osobistej biblioteki filmów (obejrzane / do obejrzenia) zapisywanej w `localStorage`. Projekt został zrealizowany w vanilla JavaScript i demonstruje pracę z REST API oraz organizację kodu bez użycia frameworków.
 
 ## 🌐 Demo
 
@@ -12,12 +12,12 @@ Aplikacja jest dostępna online:
 
 - **Przeglądanie popularnych filmów**: Automatyczne ładowanie najpopularniejszych filmów z TMDb API
 - **Wyszukiwanie filmów**: Wyszukiwanie filmów po tytule w czasie rzeczywistym
-- **Szczegółowe informacje**: Modal z pełnymi informacjami o filmie (opis, obsada, oceny, gatunki)
+- **Szczegółowe informacje**: Modal z pełnymi informacjami o filmie (opis, oceny, gatunki)
 - **Zwiastuny**: Oglądanie oficjalnych zwiastunów filmów bezpośrednio w aplikacji
 - **Biblioteka filmów**:
   - Lista obejrzanych filmów (Watched)
   - Lista filmów do obejrzenia (Queue)
-  - Przechowywanie danych w localStorage
+  - Przechowywanie danych w `localStorage`
 - **Nieskończone przewijanie**: Automatyczne ładowanie kolejnych stron z wynikami podczas przewijania
 - **Responsywny design**: Optymalizacja wyświetlania na różnych urządzeniach
 
@@ -29,12 +29,16 @@ Aplikacja jest dostępna online:
 - **jQuery**: Manipulacja DOM
 - **Notiflix**: Powiadomienia i komunikaty użytkownika
 - **The Movie Database (TMDb) API**: Źródło danych o filmach
-- **LocalStorage**: Przechowywanie danych użytkownika lokalnie
+- **localStorage**: Przechowywanie danych użytkownika lokalnie
 
 ## 📁 Struktura projektu
 
 ```
 moviebox/
+├── .github/                   # Konfiguracja CI/CD
+│   └── workflows/
+│       └── deploy.yml         # Build i deploy na GitHub Pages
+├── partials/                  # Współdzielone fragmenty HTML
 ├── src/
 │   ├── images/                 # Obrazy i zasoby graficzne
 │   ├── js/                     # Pliki JavaScript
@@ -46,13 +50,12 @@ moviebox/
 │   │   ├── local-storage.js    # Zarządzanie localStorage
 │   │   ├── loading-spinner.js  # Spinner ładowania
 │   │   └── setup.js            # Konfiguracja API
-│   ├── partials/               # HTML partials
 │   ├── sass/                   # Style SASS/SCSS
 │   │   ├── main.scss           # Główny plik stylów
 │   │   └── partials/           # Częściowe pliki stylów
 │   ├── index.html              # Strona główna
 │   └── library.html            # Strona biblioteki
-├── dist/                       # Zbudowane pliki (generowane)
+├── dist/                       # Zbudowane pliki (generowane po build)
 ├── package.json                # Zależności i skrypty
 └── README.md                   # Dokumentacja
 ```
@@ -84,7 +87,7 @@ npm install
 npm run dev
 ```
 
-Aplikacja będzie dostępna pod adresem: [http://localhost:5173](http://localhost:5173).
+Aplikacja będzie dostępna pod adresem: [http://localhost:1234](http://localhost:1234).
 
 ## 📦 Build
 
@@ -96,21 +99,21 @@ npm run build
 
 ## 🌐 Deploy
 
-Kod będzie automatycznie się zbierać i robić deploy aktualnej wersji projektu na GitHub Pages, w gałąź `gh-pages`, za każdym razem jeśli zostaną wprowadzone zmiany w `main`. Na przykład, po bezpośrednim push lub po przyjęciu pull-request. Po pewnym czasie stronę można będzie zobaczyć na żywo pod adresem:
+Przy każdym pushu do gałęzi `main` uruchamia się workflow GitHub Actions, który buduje projekt i publikuje zawartość folderu `dist` na gałęzi `gh-pages`. Po chwili aktualna wersja jest dostępna pod adresem:
 
 **[https://brzozanet.github.io/moviebox/](https://brzozanet.github.io/moviebox/)**
 
 ### Zasady organizacji plików
 
-- Wszystkie partiale plików stylów powinny być w folderze `src/sass` i importować się w `src/sass/main.scss`
-- Wszystkie partiale plików kontentu HTML powinny się znajdować w folderze `partials` i importować się w `index.html` lub `library.html`
-- Pliki skryptów JS umieszczamy w folderze `js`, wskazane aby każda niezależna funkcjonalność znalazła się w oddzielnym pliku .js i importowała się w pliku `app.js`
-- Zdjęcia umieszczamy w folderze `src/images`, przed dodaniem powinny być zoptymalizowane. Program po prostu kopiuje wykorzystane zdjęcia aby system nie musiał ich optymalizować, bo na słabych komputerach to może zająć dużo czasu.
+- Wszystkie partiale stylów powinny znajdować się w folderze `src/sass` i być importowane w `src/sass/main.scss`.
+- Wszystkie partiale HTML powinny znajdować się w folderze `partials` i być importowane w `index.html` lub `library.html`.
+- Pliki skryptów JS umieszczamy w folderze `js`; zalecane jest, aby każda niezależna funkcjonalność była w oddzielnym pliku `.js`, importowanym w `app.js`.
+- Obrazy umieszczamy w folderze `src/images`; przed dodaniem powinny być zoptymalizowane. Parcel kopiuje wykorzystane pliki, dzięki czemu nie musi wykonywać ciężkiej optymalizacji podczas budowania na słabszych komputerach.
 
 ## ⚙️ Ustawienia edytora kodu
 
-- **WAŻNE**: NIE uruchamiaj watchera SASS (`Watch Sass`), ponieważ pliki css generują się z scss za pomocą Parcel JS
-- Wyłączamy autozapis w edytorze, ponieważ każdy błąd w pliku, powstały choćby poprzez autozapis w czasie pisania instrukcji, skutkuje błędem Parcel JS
+- **WAŻNE**: Nie uruchamiaj watchera SASS (`Watch Sass`), ponieważ pliki CSS generują się z SCSS za pomocą Parcela.
+- Wyłącz autozapis w edytorze, ponieważ zapis pliku z niekompletnymi zmianami może powodować błędy w Parcelu.
 
 ## 🤝 Wkład
 
