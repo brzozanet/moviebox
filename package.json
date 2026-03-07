@@ -1,31 +1,31 @@
 {
-  "name": "project-moviebox",
+  "name": "moviebox",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://brzozanet.github.io/project-moviebox",
+  "homepage": "https://brzozanet.github.io/moviebox",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project-moviebox/"
+    "build": "parcel build src/*.html --public-url /moviebox/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brzozanet/project-moviebox.git"
+    "url": "git+https://github.com/brzozanet/moviebox.git"
   },
   "keywords": [],
   "author": "Paweł Brzozowski <pawel@brzoza.net",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brzozanet/project-moviebox/issues"
+    "url": "https://github.com/brzozanet/moviebox/issues"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3",
-    "buffer": "^5.7.1",
-    "parcel": "^2.8.3",
-    "posthtml-include": "^1.7.4"
+    "@parcel/transformer-sass": "^2.16.4",
+    "buffer": "^6.0.3",
+    "parcel": "^2.16.4",
+    "posthtml-include": "^2.0.1"
   },
   "dependencies": {
-    "jquery": "^3.7.0",
-    "lodash": "^4.17.21",
-    "notiflix": "^3.2.6"
+    "jquery": "^4.0.0",
+    "lodash": "^4.17.23",
+    "notiflix": "^3.2.8"
   }
 }
