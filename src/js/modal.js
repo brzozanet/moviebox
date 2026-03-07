@@ -1,17 +1,11 @@
-import {
-  PROJECT_LOCATION_PATH,
-  API_KEY,
-  IMG_URL,
-  URL,
-  LANGUAGE,
-} from "./setup";
+import { PROJECT_LOCATION_PATH, IMG_URL, URL, LANGUAGE } from "./setup";
 import { IMG_URL } from "./setup";
 import { UserMovies } from "./local-storage";
 import { genres } from "./genres";
 
 const userMovies = new UserMovies();
 
-export const modalBoxShow = movie => {
+export const modalBoxShow = (movie) => {
   const popupEl = document.querySelector(".backdrop");
   const closeBtnEl = document.querySelector(".modal__btn-close");
   const imageEl = document.querySelector(".modal__photo");
@@ -43,8 +37,8 @@ export const modalBoxShow = movie => {
 
   const { genre_ids } = movie;
   const movieGenres = genre_ids
-    .map(genreId => {
-      const genre = genres.find(genre => genre.id === genreId);
+    .map((genreId) => {
+      const genre = genres.find((genre) => genre.id === genreId);
       return genre ? genre.name : "";
     })
     .join(", ");
@@ -78,19 +72,19 @@ export const modalBoxShow = movie => {
     iframe.src = "";
   });
 
-  window.addEventListener("keyup", event => {
+  window.addEventListener("keyup", (event) => {
     if (event.key === "Escape") {
       popupEl.classList.add("is-hidden");
     }
   });
 
-  window.addEventListener("keyup", event => {
+  window.addEventListener("keyup", (event) => {
     if (event.key === "Escape") {
       popupEl.classList.add("is-hidden");
     }
   });
 
-  window.addEventListener("click", event => {
+  window.addEventListener("click", (event) => {
     if (event.target.classList.contains("backdrop")) {
       popupEl.classList.add("is-hidden");
     }

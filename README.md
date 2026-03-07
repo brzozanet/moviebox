@@ -1,4 +1,4 @@
-# 🎥 Inside the Moviebox
+# 🎥 Explore the Moviebox
 
 **Filmoteka (Moviebox)** to nowoczesna aplikacja webowa do wyszukiwania i przeglądania filmów z integracją TMDb API. Umożliwia wyszukiwanie w czasie rzeczywistym, przeglądanie szczegółów (obsada, oceny, zwiastuny), nieskończone przewijanie oraz budowanie osobistej biblioteki filmów (obejrzane / do obejrzenia) zapisywanej w `localStorage`. Projekt został zrealizowany w vanilla JavaScript i demonstruje pracę z REST API oraz organizację kodu bez użycia frameworków.
 
@@ -28,6 +28,7 @@ Aplikacja jest dostępna online:
 - **SASS/SCSS**: Preprocesor CSS
 - **jQuery**: Manipulacja DOM
 - **Notiflix**: Powiadomienia i komunikaty użytkownika
+- **dotenv**: Wczytywanie klucza API z pliku `.env`
 - **The Movie Database (TMDb) API**: Źródło danych o filmach
 - **localStorage**: Przechowywanie danych użytkownika lokalnie
 
@@ -78,6 +79,16 @@ cd moviebox
 ```bash
 npm install
 ```
+
+3. **Konfiguracja klucza API (TMDb)**:
+
+Utwórz plik `.env` w katalogu głównym projektu i dodaj:
+
+```bash
+API_KEY=twoj_klucz_tmdb
+```
+
+Bez poprawnie ustawionego `API_KEY` wyszukiwanie i pobieranie danych filmów nie będzie działać.
 
 ## 💻 Uruchomienie
 

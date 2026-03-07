@@ -1,15 +1,12 @@
-import "../sass/main.scss";
-import {
-  PROJECT_LOCATION_PATH,
-  API_KEY,
-  IMG_URL,
-  URL,
-  LANGUAGE,
-} from "./setup";
+import { PROJECT_LOCATION_PATH, IMG_URL, URL, LANGUAGE } from "./setup";
 import { showSpinner, hideSpinner } from "./loading-spinner";
 import { modalBoxShow } from "./modal";
-import "./search-box";
 import Notiflix from "notiflix";
+import "../sass/main.scss";
+import "./search-box";
+import "dotenv/config";
+
+const API_KEY = process.env.API_KEY;
 
 export const fetchMostPopular = async () => {
   let currentPage = 1;

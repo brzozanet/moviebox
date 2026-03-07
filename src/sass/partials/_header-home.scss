@@ -70,9 +70,9 @@
   &__search-border {
     width: 100%;
     max-width: 253px;
-    padding: 12px 16px;
+    padding: 15px 18px;
     color: $IColor;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     background: rgba(15, 23, 42, 0.38);
     border: 1px solid rgba(255, 255, 255, 0.35);
@@ -133,6 +133,8 @@
 
     &__search-border {
       max-width: 407px;
+      padding: 16px 20px;
+      font-size: 18px;
     }
   }
 }
@@ -155,6 +157,8 @@
 
     &__search-border {
       max-width: 462px;
+      padding: 17px 22px;
+      font-size: 19px;
     }
   }
 }

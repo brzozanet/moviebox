@@ -1,17 +1,13 @@
-import "../sass/main.scss";
-import {
-  PROJECT_LOCATION_PATH,
-  API_KEY,
-  IMG_URL,
-  URL,
-  LANGUAGE,
-} from "./setup";
+import { IMG_URL, URL, LANGUAGE } from "./setup";
 import { UserMovies } from "./local-storage";
 import { genres } from "./genres";
 import { modalBoxShow } from "./modal";
 import Notiflix from "notiflix";
 import debounce from "lodash/debounce";
+import "../sass/main.scss";
+import "dotenv/config";
 
+const API_KEY = process.env.API_KEY;
 const DEBOUNCE_DELAY = 1000;
 
 Notiflix.Notify.init({
@@ -26,7 +22,7 @@ Notiflix.Notify.init({
 
 const userMovies = new UserMovies();
 
-const SEARCH_API = `${URL}/search/movie?api_key=${API_KEY}&query=`;
+const SEARCH_API = `${URL}search/movie?api_key=${API_KEY}&query=`;
 const form = document.querySelector("#form");
 const search = document.querySelector("#search");
 const moviesContainerEl = document.querySelector(".movies-container");
@@ -36,7 +32,7 @@ async function getMovies(url) {
     const res = await fetch(url);
     if (!res.ok) {
       throw new Notiflix.Notify.warning(
-        "Sorry, the server is not responding. Please try again later."
+        "Sorry, the server is not responding. Please try again later.",
       );
     }
     const data = await res.json();
@@ -52,7 +48,7 @@ async function getMovies(url) {
 function showMovies(movies) {
   moviesContainerEl.innerHTML = "";
 
-  movies.forEach(movie => {
+  movies.forEach((movie) => {
     const {
       original_title,
       poster_path,
@@ -65,8 +61,8 @@ function showMovies(movies) {
     movieEl.classList.add("card");
     movieEl.id = "card";
     const movieGenres = genre_ids
-      .map(genreId => {
-        const genre = genres.find(genre => genre.id === genreId);
+      .map((genreId) => {
+        const genre = genres.find((genre) => genre.id === genreId);
         return genre ? genre.name : "";
       })
       .join(", ");
@@ -106,19 +102,19 @@ function showMovies(movies) {
 if (form !== null)
   form.addEventListener(
     "input",
-    debounce(event => {
+    debounce((event) => {
       event.preventDefault();
-      const searchTerm = search.value;
-      const searchUrl = SEARCH_API + searchTerm;
+      const searchTerm = search.value.trim();
+      const searchUrl = SEARCH_API + encodeURIComponent(searchTerm);
       if (searchTerm && searchTerm !== "") {
         getMovies(searchUrl);
         // } else {
         //   window.location.reload();
       }
-    }, DEBOUNCE_DELAY)
+    }, DEBOUNCE_DELAY),
   );
 
-const getTrailerLink = async id => {
+const getTrailerLink = async (id) => {
   const options = {
     method: "GET",
     headers: {
@@ -130,7 +126,7 @@ const getTrailerLink = async id => {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=${LANGUAGE}&api_key=${API_KEY}`,
-      options
+      options,
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
