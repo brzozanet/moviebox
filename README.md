@@ -2,7 +2,7 @@
 
 ![Screenshot App](https://raw.githubusercontent.com/brzozanet/moviebox/refs/heads/main/src/images/gh-cover-project-moviebox.jpg)
 
-**Filmoteka (Moviebox)** to nowoczesna aplikacja webowa do wyszukiwania i przeglądania filmów z integracją TMDb API. Umożliwia wyszukiwanie w czasie rzeczywistym, przeglądanie szczegółów (obsada, oceny, zwiastuny), nieskończone przewijanie oraz budowanie osobistej biblioteki filmów (obejrzane / do obejrzenia) zapisywanej w `localStorage`. Projekt został zrealizowany w vanilla JavaScript i demonstruje pracę z REST API oraz organizację kodu bez użycia frameworków.
+**Filmoteka (Moviebox)** to nowoczesna aplikacja webowa do wyszukiwania i przeglądania filmów z integracją TMDb API. Umożliwia wyszukiwanie w czasie rzeczywistym, przeglądanie szczegółów (obsada, oceny, zwiastuny), nieskończone przewijanie oraz budowanie osobistej biblioteki filmów (obejrzane / do obejrzenia) zapisywanej w `localStorage`. Projekt został zrealizowany w vanilla JavaScript i demonstruje pracę z REST API oraz organizację kodu bez użycia frameworków..
 
 ## 🌐 Demo
 
